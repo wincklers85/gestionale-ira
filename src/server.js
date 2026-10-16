@@ -5,6 +5,7 @@ import twilio from "twilio";
 const app = express();
 app.disable("x-powered-by");
 app.use(express.json({ limit: "16kb" }));
+app.use(express.static("public", { index: "index.html" }));
 const secret = process.env.IRA_API_KEY;
 const sendRoutes = express.Router();
 sendRoutes.use((req, res, next) => {
