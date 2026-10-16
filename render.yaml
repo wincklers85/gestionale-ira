@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: ira-gestionale-test
+    runtime: node
+    plan: free
+    region: frankfurt
+    repo: https://github.com/wincklers85/gestionale-ira
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: IRA_API_KEY
+        generateValue: true
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_MESSAGING_SERVICE_SID
+        sync: false
+      - key: META_WA_ACCESS_TOKEN
+        sync: false
+      - key: META_WA_PHONE_NUMBER_ID
+        sync: false
+      - key: META_GRAPH_VERSION
+        value: v23.0
